@@ -127,9 +127,8 @@
                 </div>
                   
                 <div class="sensor-button-dabba">
-                    <form action="{{ url_for('append_to_db') }}" method="POST">
+                    
                         <button id="sensor-submit" class="sensor-submit">Get data and insights for selected location &nbsp; &#8599; &nbsp;</button>
-                    </form>
                        
                 </div>
                 
@@ -154,7 +153,9 @@
                 </div>
 
                 <div class="sensor-button-dabba">
+                    <form action="{{ url_for('append_to_db') }}" method="POST">
                     <button id="sensor-submit" class="sensor-submit" >Transmit sensor readings and submit  &nbsp; &#8599; &nbsp;</button>
+                </form>
                 </div>
             </div>
 
