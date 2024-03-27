@@ -114,10 +114,10 @@
                 </div>
 
 
-
+                <form action="{{ url_for('read_from_db')}}" method="post">
                 <div class="search-section">
 
-                    <input list="options" type="text" class="input-dabba" placeholder="Search for a location">
+                    <input list="options" type="text" class="input-dabba"name="value" placeholder="Search for a location">
                     <datalist id="options">
                         <option value="Kallakurichi">Kallakurichi</option>
                         <option value="Salem">Salem</option>
@@ -128,10 +128,10 @@
                   
                 <div class="sensor-button-dabba">
                     
-                        <button id="sensor-submit" class="sensor-submit">Get data and insights for selected location &nbsp; &#8599; &nbsp;</button>
-                       
+                        <button id="sensor-submit" class="sensor-submit" type="submit">Get data and insights for selected location &nbsp; &#8599; &nbsp;</button>
+                    
                 </div>
-                
+            </form>
 
             </div>
 
