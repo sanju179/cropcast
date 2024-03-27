@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CropCast</title>
+    <link rel="icon" type="image/x-icon" href="logo.png">
+    <link rel="stylesheet" href="/static/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <div id="first-page">
+
+
+        <div class="nav-bar">
+
+            <div class="logo-div">
+                <div class="main-title">
+                    <img src="logo.png" style="height: 30px; padding-top: 3px;">
+                    CropCast
+                </div>
+            </div>
+
+            <div class="navigation">
+
+                <button class="nav-element" id="about-button">About</button>
+
+                <button class="nav-element" id="services-button">Services</button>
+
+                <button class="nav-element" id="product-button">Products</button>
+
+                <button class="nav-element" id="client-button">Clients</button>
+
+                <button class="nav-element" id="contact-button" style="margin-left: 150px;"><u>Contact</u></button>
+            </div>
+
+
+        </div>
+
+        <div class="content-first-page">
+
+            <div class="tagline-box">
+                <div class="tagline-text">
+                    Empowering farmers using data-driven insights
+                </div>
+
+                <div class="tagline-small-text" style="font-weight: 300; width: 400px; margin-bottom: 80px;">
+                    Harnessing the power of data to optimize crop selection and drive agricultural efficiency.
+                </div>
+                <!-- <div class="button-box"> -->
+                    <a href="#second-page"><div id="main-page-button" class="main-page-button" >Get Started &#8599; &nbsp;</div></a>
+                <!-- </div> -->
+            </div>
+
+            <div class="picture-box">
+                <img id="main-page-image" src="crop.jpg" alt="">
+                <div class="text-dabba">
+                    <div>Independant</div>
+                    <div>Integrated</div>
+                    <div>Innovation</div>
+                    <div>&nbsp;</div>
+                    <div style="font-size: 15px; font-weight: 300;">[ scroll down ]</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="second-page" id="second-page">
+
+
+
+        <div class="first-column-second-page">
+
+            <div class="only-text-second-page">
+            <div class="welcome-dabba">
+                welcome &nbsp;to  
+            </div>
+
+            <div class="heading-dabba">
+                CROPCAST
+            </div>
+
+
+             </div>
+
+        </div>
+
+        <div class="second-column-second-page">
+
+            <div class="search-existing-dabba">
+                
+                <div class="sensor-main-header" style="font-size: 35px;">
+                    ACCESS LOCATION-BASED DATA
+                </div>
+
+                <div class="sensor-sub-header" style="margin-left: 420px;">
+                    access agricultural insights
+                </div>
+
+
+                <div class="sensor-instructions-dabba">
+                    
+                    <div>1. Enter a location in the input box above.</div>
+                    <div>2. All nearby locations will be displayed below the search bar.</div>
+                    <div>3. Click on the desired location from the list to select it</div>
+    
+                </div>
+
+
+
+                <div class="search-section">
+
+                    <input list="options" type="text" class="input-dabba" placeholder="Search for a location">
+                    <datalist id="options">
+                        <option value="Kallakurichi">Kallakurichi</option>
+                        <option value="Salem">Salem</option>
+                        <option value="Chennai">Chennai </option>
+                    </datalist>
+                    <div class="blackbox"><i class="fa fa-search" style="color: white; margin-left: 10px; margin-top: 12px;"></i></div>
+                </div>
+                  
+                <div class="sensor-button-dabba">
+                    <form action="{{ url_for('append_to_db') }}" method="POST">
+                        <button id="sensor-submit" class="sensor-submit">Get data and insights for selected location &nbsp; &#8599; &nbsp;</button>
+                    </form>
+                       
+                </div>
+                
+
+            </div>
+
+            <div class="main-sensor-page">
+                
+                <div class="sensor-main-header">
+                    HARNESS SENSOR TECHNOLOGY
+                </div>
+
+                <div class="sensor-sub-header">
+                    maximize yield with innovative data solutions
+                </div>
+
+                <div class="sensor-instructions-dabba">
+                    
+                    <div>1. Connect our device and CropCast website to the same network.</div>
+                    <div>2. Once connected, click 'Submit' to initiate automatic data transfer to CropCast.</div>
+    
+                </div>
+
+                <div class="sensor-button-dabba">
+                    <button id="sensor-submit" class="sensor-submit" >Transmit sensor readings and submit  &nbsp; &#8599; &nbsp;</button>
+                </div>
+            </div>
+
+
+        </div>
+        <br>
+        <br>
+        <div style="margin-left: 600px; font-weight: 300;"> [ scroll down to learn how we do it ]</div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
