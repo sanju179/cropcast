@@ -3,6 +3,7 @@ import pymongo
 from pymongo.server_api import ServerApi
 import datetime
 from model import predict_crop
+from fertmodel import predict_fertilizer
 from math import cos, asin, sqrt
 from geopy.geocoders import Nominatim
 from bson import json_util 
@@ -36,7 +37,7 @@ def append_to_db():
     rainfall = 110.91
 
     crops_recommended=predict_crop(N,P,K,temperature,humidity,ph,rainfall)
-    
+    fertilizer_recommended = predict_fertilizer(N,P,K)
     collection.insert_one({
         "timestamp": datetime.datetime.now(),
     "metadata": {"sensor_id": "dht=1"},
@@ -47,7 +48,8 @@ def append_to_db():
     "n":f"{N}",
     "p":f"{P}",
     "k":f"{K}",
-    'crop_prediction':crops_recommended
+    'crop_prediction':crops_recommended,
+    'fertilizers_rec':fertilizer_recommended
     })
     return 'Data added to MongoDB'
 
