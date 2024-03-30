@@ -3,12 +3,12 @@ import pymongo
 from pymongo.server_api import ServerApi
 import datetime
 from model import predict_crop
-from fertmodel import predict_fertilizer
+from fertilizer_model import predict_fertilizer
 from math import cos, asin, sqrt
 from geopy.geocoders import Nominatim
 from bson import json_util 
 import json
-
+from weather import fetch_temp
 app = Flask(__name__) 
 
 uri = "mongodb+srv://sanjune:sanjune@cluster0.dce1pnv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
@@ -112,19 +112,29 @@ def read_from_db():
     n = closest_data['n']
     p = closest_data['p']
     k = closest_data['k']
-    crops = closest_data['crop']
+    ph = closest_data['ph']
+    
+    real_time_weather = fetch_temp(lat,lng)
+    key = list(real_time_weather.keys())[0]
+    real_time_temp = real_time_weather[key][0]
+    real_time_humidity = real_time_weather[key][1]
 
+    crops_recommended=predict_crop(n,p,k,real_time_temp,real_time_humidity,ph,210)
+    fertilizer_recommended = predict_fertilizer(n,p,k)
     all_data = { 
         'location': location,
-        'closest_coordinates':[closest_data['coordinates'][0],closest_data['coordinates'][1]],
+        #'closest_coordinates':[closest_data['coordinates'][0]+"° N",closest_data['coordinates'][1]+"° E"],
+        'closest_coordinates': [lat,lng],
         'n': n,
         'p': p,
         'k': k,
-        'common_crops': list(crops)
+
+        'common_crops': list(crops_recommended),
+        'common_fertilizer':fertilizer_recommended
     }
     cursorr = json_util.dumps(all_data)
     
-    return cursorr
+    return render_template('lastpage.html', **all_data)
 
 
 @app.route('/')

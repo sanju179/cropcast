@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CropCast</title>
-    <link rel="icon" type="image/x-icon" href="../static/logo.png">
+    <link rel="icon" type="image/x-icon" href="../static/logo_favicon.png">
     <link rel="stylesheet" href="../static/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +23,7 @@
         </div>
         <div class="loco-display">
             <div class="location">
-                <p>Location: Kallakurichi (11.7384° N, 78.9639° E)</p>
+                <p>Location: {{location}} ({{closest_coordinates[0]}}, {{closest_coordinates[1]}})</p>
             </div>
         </div>
     </div>
@@ -31,7 +31,7 @@
     <div class="all-crops">
         <div class="header">
             <div id="heading-one"><h1><i>Crops we recommend for your soil type</i></h1></div>
-            <div id="heading-two"> <p>Fertilizer: Fourteen-Thirty Five-Fourteen</p></div>
+            <div id="heading-two"> <p>Fertilizer: {{common_fertilizer[0]}} & {{common_fertilizer[1]}}</p></div>
            
         </div>
         <div class="crop-container">
@@ -43,9 +43,9 @@
         </div>
         <div class="third-crop"></div> -->
         <div class="crop1">
-            <img src="..\static\rice.png">
+            <img src="..\static\crop\{{common_crops[0]}}.png">
 
-            <h2><center>Rice</center></h2>
+            <h2><center> {{common_crops[0]}} </center></h2>
 
             <div class="para-container">
                 <p><center>Rice is the basic food crop and being a tropical plant, 
@@ -55,9 +55,9 @@
         </div>
         <div class="separator"></div>
         <div class="crop1">
-            <img src="..\static\maize.png">
+            <img src="..\static\crop\{{common_crops[1]}}.png">
 
-            <h2><center>Maize</center></h2>
+            <h2><center> {{common_crops[1]}} </center></h2>
 
             <div class="para-container">
                 <p><center>Rice is the basic food crop and being a tropical plant, 
@@ -66,9 +66,9 @@
         </div>
         <div class="separator"></div>
         <div class="crop1">
-            <img src="..\static\lentil.png">
+            <img src="..\static\crop\{{common_crops[2]}}.png">
 
-            <h2><center>Lentil</center></h2>
+            <h2><center>{{common_crops[2]}}</center></h2>
 
             <div class="para-container">
                 <p><center>Rice is the basic food crop and being a tropical plant, 
