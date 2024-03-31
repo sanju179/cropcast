@@ -21,7 +21,7 @@ try:
 except Exception as e:
     print(e)
 db = client["final"]
-collection = db["recommended"]
+collection = db["soil_data"]
 
 loc = Nominatim(user_agent="Geopy Library")
 
@@ -76,12 +76,30 @@ def closest(data, v):
 
 
 def address_to_latlng(place):
-    # entering the location name
-    getLoc = loc.geocode(place)
+    try:
+        # Attempt to geocode the location name
+        geolocator = Nominatim(user_agent="Geopy Library")
+        location = geolocator.geocode(place)
+        
+        if location:
+            # If geocoding was successful, return the latitude and longitude
+            return location.latitude, location.longitude
+        else:
+            # If location is None (geocoding failed), return None or handle the error accordingly
+            print("Failed to geocode the location:", place)
+            return None
+    except Exception as e:
+        # Handle any exceptions that might occur during the geocoding process
+        print("Error occurred during geocoding:", e)
+        return None
 
-    # printing address
-    print(getLoc.address)
-    return getLoc
+
+@app.route('/process_location/',methods=["POST"])
+def get_coords():
+    coords = request.get_json()
+    print(coords)
+    return jsonfiy(coords)
+
 
 @app.route('/retrieve/',methods=["POST"])
 def read_from_db():
@@ -91,9 +109,9 @@ def read_from_db():
     # do location to coordinate translation here !!!
 
     geoLoc = address_to_latlng(location)
-
-    lat = geoLoc.latitude
-    lng = geoLoc.longitude
+    print(geoLoc)
+    lat= geoLoc[0]
+    lng = geoLoc[1]
     # printing latitude and longitude
     print("Latitude = ", lat, "\n")
     print("Longitude = ", lng)

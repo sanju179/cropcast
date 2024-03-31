@@ -3,10 +3,11 @@ import json
 from geopy.geocoders import Nominatim
 import geocoder
 
-lat = 17.4065
-lng = 78.4772
+lat = "13.0901503"
+lng = "80.1601054"
 
 loc = Nominatim(user_agent="Geopy Library")
+
 
 def address_to_latlng(place):
     # entering the location name
@@ -16,11 +17,8 @@ def address_to_latlng(place):
     print(getLoc.address)
     return getLoc
 
-geoLoc = address_to_latlng("Hyderabad")
 
-# printing latitude and longitude
-print("Latitude = ", geoLoc.latitude, "\n")
-print("Longitude = ", geoLoc.longitude)
+
 
 
 
@@ -46,9 +44,3 @@ def fetch_temp(lat, lng):
     dic[time] = [temperature, humidity]
     return dic
 
-weather = fetch_temp(geoLoc.latitude, geoLoc.longitude)
-print(weather)
-key = list(weather.keys())[0]
-print(f"Time: {key}")
-print(f"Current Temperature: {weather[key][0]}")
-print(f"Humidity: {weather[key][1]}")

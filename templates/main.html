@@ -97,7 +97,13 @@
             <div class="search-existing-dabba">
                 
                 <div class="sensor-main-header" style="font-size: 35px;">
+                    <form id="locationForm" method="POST" action="/process_location" >
+                        <input type="hidden" name="latitude" id="latitude">
+                        <input type="hidden" name="longitude" id="longitude">
+                        <!-- <button type="submit">Submit Location</button> -->
+                    
                     ACCESS LOCATION-BASED DATA
+                </form>
                 </div>
 
                 <div class="sensor-sub-header" style="margin-left: 420px;">
